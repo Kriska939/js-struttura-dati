@@ -17,3 +17,35 @@ N.B: mappatura da fare tenendo conto di necessità di filtri !
 3. Stampo informazioni su HTML (brackets?)
 */
 
+var card = {
+    name: "Incredible Name",
+    launchCost: ["2", "R", "R"],
+    totalManaCost: 4,
+    type: "Creature",
+    subType: "Goblin",
+    expansion: { // deve essere un oggetto perché ha più proprietà
+        number: 9,
+        color: "Golden",
+        nome: "Ninth Edition"
+    },
+    abilities: { //come sopra
+        text: "Strongest Ability Ever",
+        priceToUse: ["R", "B"],
+    },
+    flavorText: "Descriptive Quote",
+    illustrator: { // come sopra
+        id: 1,
+        name: "Leonardo Da Vinci"
+    },
+    collectionNum: "177/350",
+    strenght: 23,
+    constitution: 23,
+    border: "#000",
+    background: {
+        cardColor: "green",
+        image: "URL"
+    }
+
+};
+
+console.log(card);
