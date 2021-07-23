@@ -22,37 +22,103 @@ N.B: mappatura da fare tenendo conto di necessità di filtri !
 
 // 1-2: creo oggetto con tutte le proprietà mappate:
 
-const card = {
-    name: "Incredible Name",
-    launchCost: ["2", "R", "R"],
-    totalManaCost: 4,
-    type: "Creature",
-    subType: "Goblin",
-    expansion: { // deve essere un oggetto perché ha più proprietà
-        number: 9,
-        color: "Golden",
-        editionName: "Ninth Edition"
-    },
-    abilities: { //come sopra
-        text: "Strongest Ability Ever",
-        priceToUse: ["R", "B"],
-    },
-    flavorText: "Descriptive Quote",
-    illustrator: { // come sopra
+const deck = [
+    {
         id: 1,
-        illustratorName: "Leonardo Da Vinci"
+        name: "Incredible Name",
+        launchCost: ["2", "R", "R"],
+        totalManaCost: 4,
+        type: "Creature",
+        subType: "Goblin",
+        expansion: { // deve essere un oggetto perché ha più proprietà
+            number: 9,
+            color: "Golden",
+            editionName: "Ninth Edition"
+        },
+        abilities: { //come sopra
+            text: "Strongest Ability Ever",
+            priceToUse: ["R", "B"],
+        },
+        flavorText: "Descriptive Quote",
+        illustrator: { // come sopra
+            id: 1,
+            illustratorName: "Leonardo Da Vinci"
+        },
+        collectionNum: "177/350",
+        strenght: 23,
+        constitution: 23,
+        border: "#000",
+        background: {
+            cardColor: "green",
+            image: "URL"
+        }
+
     },
-    collectionNum: "177/350",
-    strenght: 23,
-    constitution: 23,
-    border: "#000",
-    background: {
-        cardColor: "green",
-        image: "URL"
+
+    {
+        id: 2,
+        name: "Super Name",
+        launchCost: ["2", "R", "R"],
+        totalManaCost: 8,
+        type: "Creature",
+        subType: "Ninja",
+        expansion: { // deve essere un oggetto perché ha più proprietà
+            number: 2,
+            color: "Black",
+            editionName: "Second Edition"
+        },
+        abilities: { //come sopra
+            text: "Weakest Ability Ever",
+            priceToUse: ["W", "B"],
+        },
+        flavorText: "Descriptive Quote",
+        illustrator: { // come sopra
+            id: 1,
+            illustratorName: "Leonardo Da Vinci"
+        },
+        collectionNum: "120/350",
+        strenght: 19,
+        constitution: 10,
+        border: "#000",
+        background: {
+            cardColor: "green",
+            image: "URL"
+        }
+
+    },
+
+    {
+        id: 3,
+        name: "Dumb Name",
+        launchCost: ["2", "W", "B"],
+        totalManaCost: 2,
+        type: "Creature",
+        subType: "Giant",
+        expansion: { // deve essere un oggetto perché ha più proprietà
+            number: 3,
+            color: "Black",
+            editionName: "Third Edition"
+        },
+        abilities: { //come sopra
+            text: "Most Boring Ability Ever",
+            priceToUse: ["R", "W"],
+        },
+        flavorText: "Descriptive Quote",
+        illustrator: { // come sopra
+            id: 1,
+            illustratorName: "Leonardo Da Vinci"
+        },
+        collectionNum: "12/250",
+        strenght: 5,
+        constitution: 5,
+        border: "#000",
+        background: {
+            cardColor: "green",
+            image: "URL"
+        }
+
     }
-
-};
-
+];
 
 // 3. STAMPA informazioni su HTML:
 
@@ -65,7 +131,9 @@ const createCard = (card) => {
 
     // Template di stampa (stampo solo le info necessarie):
 
-    const cardTemplate = `<ul class="card">
+    const cardTemplate = `<div class="inline">
+    <ul class="card">
+<li><strong>Id:</strong> ${card.id}</li>
 <li><strong>Name:</strong> ${card.name}</li>
 <li><strong>Launch Cost:</strong> ${card.launchCost.join(", ")}</li>
 <li><strong>Type:</strong> ${card.type} ${subType}</li>
@@ -93,14 +161,22 @@ const createCard = (card) => {
 <li><strong>Color:</strong> ${card.background.cardColor}</li>
 <li><strong>Image:</strong> ${card.background.image}</li>
 </ul>
-</ul>`;
+</ul></div>
+`;
 
     return cardTemplate;
 }
 
 
+let deckTemplate = ""; // variabile di appoggio per stampare tutte le card e aggiungerle una ad una 
 
-display.innerHTML = createCard(card);
+for (i = 0; i < deck.length; i++) {
+    const currentCard = deck[i];
+    deckTemplate += createCard(currentCard);
+}
+
+
+display.innerHTML = deckTemplate;
 
 
 // ------- PARTE 2 ----
