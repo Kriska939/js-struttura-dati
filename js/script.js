@@ -53,22 +53,19 @@ const card = {
 
 };
 
-//check card:
-// console.log(card);
 
 // 3. STAMPA informazioni su HTML:
 
 const display = document.getElementById("displayCard");
 
+const createCard = (card) => {
 
-// SE il subtype non è presente, devo stampare null. Altrimenti, di default, si stampa undefined:
-const subType = card.subType ? ` - ${card.subType}` : "";
+    // SE il subtype non è presente, devo stampare null. Altrimenti, di default, si stampa undefined:
+    const subType = card.subType ? ` - ${card.subType}` : "";
 
+    // Template di stampa (stampo solo le info necessarie):
 
-// Template di stampa (stampo solo le info necessarie):
-
-
-let cardTemplate = `<ul class="card">
+    const cardTemplate = `<ul class="card">
 <li><strong>Name:</strong> ${card.name}</li>
 <li><strong>Launch Cost:</strong> ${card.launchCost.join(", ")}</li>
 <li><strong>Type:</strong> ${card.type} ${subType}</li>
@@ -98,4 +95,30 @@ let cardTemplate = `<ul class="card">
 </ul>
 </ul>`;
 
-display.innerHTML = cardTemplate;
+    return cardTemplate;
+}
+
+
+
+display.innerHTML = createCard(card);
+
+
+// ------- PARTE 2 ----
+/*
+
+Completiamo il nostro archivio delle carte aggiungendo i seguenti step:
+1. Creiamo un mazzo di carte
+2. Stampiamo tutte  le carte su schermo
+3. Aggiungiamo un piccolo form in HTML
+4. Ragioniamo pian pianino sulla logica dei filtri
+
+E' RICHIESTO:
+
+1. filtrare prima le proprietà con valori semplici (stringhe o numeri)
+2. Filtrare le proprietà il cui valore è un array di stringhe
+
+-----------------------------------------------------
+BONUS:
+Far sì che se filtro una proprietà con valore stringa, riesca a mostrare la carta anche se non scrivo il suo testo interamente (es: cerco il nome digitando "creat" e riesco a trovare nei risultati le carte che hanno nel nome "creatura")
+Filtrare anche altre proprietà i cui valori sono più complessi, se ne avete (oggetti, array di oggetti)
+*/
