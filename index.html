@@ -10,7 +10,19 @@
 </head>
 
 <body>
-    <section>
+    <section id="form">
+        <input type="search" id="search" placeholder="Search...">
+        <select name="filter" id="filter">
+            <option value="id">Id</option>
+            <option value="name">Name</option>
+            <option value="launch-cost">Launch Cost</option>
+            <option value="type">Type</option>
+            <option value="abilities">Abilities</option>
+            <option value="collectionNum">Collection Number</option>
+            <option value="border">Border</option>
+        </select>
+    </section>
+    <section id="cards">
         <h1>Card</h1>
         <p id="displayCard"></p>
     </section>
