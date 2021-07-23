@@ -178,6 +178,13 @@ for (i = 0; i < deck.length; i++) {
 
 display.innerHTML = deckTemplate;
 
+// FILTRI (richiesti in parte 2 dell'esercizio):
+
+
+
+
+
+
 
 // ------- PARTE 2 ----
 /*
