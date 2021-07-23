@@ -185,19 +185,35 @@ finalRender(deck, display);
 
 // VARIABILI UTILI:
 
-const searchInput = document.getElementById(search);
-const inputField = document.getElementById(filter);
-const button = document.getElementById(btn);
+const searchInput = document.getElementById("search");
+const inputFilter = document.getElementById("filter");
+const button = document.getElementById("btn");
 
 // Logica filtri: 
 
 button.addEventListener("click", () => {
 
     const searchedWord = searchInput.value;
-    const selectedField = inputField.value;
+    const selectedFilter = inputFilter.value;
 
+    // se è stato selezionato il filtro "all", è necessario solo richiamare la funzione (mostro tutto l'array)
+    if (selectedFilter === "all") {
+        finalRender(deck, display);
+        return;
+    }
+
+    // se devo mostrare solo alcune card, ho bisogno di una variabile che contenga l'array parziale: 
+    const searchResults = [];
+
+    for (i = 0; i < deck.length; i++) {
+        const currentCard = deck[i];
+        if (currentCard[selectedFilter] == searchedWord) {
+            searchResults.push(currentCard);
+        }
+    }
+
+    finalRender(searchResults, display);
 }
-
 );
 
 
