@@ -180,7 +180,22 @@ display.innerHTML = deckTemplate;
 
 // FILTRI (richiesti in parte 2 dell'esercizio):
 
+// VARIABILI UTILI:
 
+const searchInput = document.getElementById(search);
+const inputField = document.getElementById(filter);
+const button = document.getElementById(btn);
+
+// Logica filtri: 
+
+button.addEventListener("click", () => {
+
+    const searchedWord = searchInput.value;
+    const selectedField = inputField.value;
+
+}
+
+);
 
 
 
