@@ -167,16 +167,19 @@ const createCard = (card) => {
     return cardTemplate;
 }
 
+const finalRender = (deck, targetElement) => {
+    let deckTemplate = ""; // variabile di appoggio per stampare tutte le card e aggiungerle una ad una 
 
-let deckTemplate = ""; // variabile di appoggio per stampare tutte le card e aggiungerle una ad una 
+    for (i = 0; i < deck.length; i++) {
+        const currentCard = deck[i];
+        deckTemplate += createCard(currentCard);
+    }
 
-for (i = 0; i < deck.length; i++) {
-    const currentCard = deck[i];
-    deckTemplate += createCard(currentCard);
+    targetElement.innerHTML = deckTemplate;
 }
 
+finalRender(deck, display);
 
-display.innerHTML = deckTemplate;
 
 // FILTRI (richiesti in parte 2 dell'esercizio):
 
