@@ -24,7 +24,7 @@ N.B: mappatura da fare tenendo conto di necessità di filtri !
 
 const deck = [
     {
-        id: 1,
+        id: "1",
         name: "Incredible Name",
         launchCost: ["2", "R", "R"],
         totalManaCost: 4,
@@ -56,7 +56,7 @@ const deck = [
     },
 
     {
-        id: 2,
+        id: "2",
         name: "Super Name",
         launchCost: ["2", "R", "R"],
         totalManaCost: 8,
@@ -88,7 +88,7 @@ const deck = [
     },
 
     {
-        id: 3,
+        id: "3",
         name: "Dumb Name",
         launchCost: ["2", "W", "B"],
         totalManaCost: 2,
@@ -126,13 +126,13 @@ const display = document.getElementById("displayCard");
 
 const createCard = (card) => {
 
-    // SE il subtype non è presente, devo stampare null. Altrimenti, di default, si stampa undefined:
+    // SE il subtype non è presente, devo stampare spazio vuoto. Altrimenti, di default, si stampa undefined:
     const subType = card.subType ? ` - ${card.subType}` : "";
 
     // Template di stampa (stampo solo le info necessarie):
 
     const cardTemplate = `<div class="inline">
-    <ul class="card">
+<ul class="card">
 <li><strong>Id:</strong> ${card.id}</li>
 <li><strong>Name:</strong> ${card.name}</li>
 <li><strong>Launch Cost:</strong> ${card.launchCost.join(", ")}</li>
@@ -205,9 +205,12 @@ button.addEventListener("click", () => {
     // se devo mostrare solo alcune card, ho bisogno di una variabile che contenga l'array parziale: 
     const searchResults = [];
 
+
+    // utilizzo .includes perchè devo rendere la ricerca possibile anche per parole parziali e incomplete non strettamente uguali al contenuto delle proprietà: 
+
     for (i = 0; i < deck.length; i++) {
         const currentCard = deck[i];
-        if (currentCard[selectedFilter] == searchedWord) {
+        if (currentCard[selectedFilter].includes(searchedWord)) {
             searchResults.push(currentCard);
         }
     }
